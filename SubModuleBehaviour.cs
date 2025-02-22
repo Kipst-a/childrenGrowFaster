@@ -17,27 +17,13 @@ namespace childrenGrowFaster
         private bool isKidnapped = false;
         public override void RegisterEvents()
         {
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, OnDailyTick2);
         }
 
         public override void SyncData(IDataStore dataStore)
         {
         }
 
-        private void OnDailyTick2()
-        {
-            if (GlobalSettings<SubModuleSettings>.Instance.spouseEventsEnabled)
-            {
-                if (Hero.MainHero.Spouse != null && !Hero.MainHero.Spouse.IsPregnant)
-                {
-                    var events = new List<Action> { SpouseEvent1, SpouseEvent2, SpouseEvent3, SpouseEvent4, SpouseEvent5 };
-                    if (MBRandom.RandomFloat < GlobalSettings<SubModuleSettings>.Instance.eventChance)
-                    {
-                        events[MBRandom.RandomInt(events.Count)]();
-                    }
-                }
-            }
-        }
+ 
 
         private void SpouseEvent1()
         {

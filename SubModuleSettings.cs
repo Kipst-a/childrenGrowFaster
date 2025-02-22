@@ -12,25 +12,21 @@ namespace childrenGrowFaster
         [SettingPropertyGroup("Children Growth Rate Settings")]
         public float newGrowthRate { get; set; } = 15f;
 
-        [SettingPropertyBool("Affect player children only", Order = 1, RequireRestart = false, HintText = "Mod only affects growth rate of player children.")]
+        [SettingPropertyFloatingInteger("Adult Growth Rate", 0f, 10f, "0.0", Order = 1, RequireRestart = false, HintText = "Adjusts the rate at which adults grow.")]
+        [SettingPropertyGroup("Children Growth Rate Settings")]
+        public float adultGrowthRate { get; set; } = 3f;
+
+        [SettingPropertyBool("Affect player children only", Order = 2, RequireRestart = false, HintText = "Mod only affects growth rate of player children.")]
         [SettingPropertyGroup("Children Growth Rate Settings")]
         public bool affectOnlyPlayerChildren { get; set; } = true;
 
-        [SettingPropertyBool("Instant Growth", Order = 2, RequireRestart = false, HintText = "Children will grow to adulthood instantly.")]
+        [SettingPropertyBool("Instant Growth", Order = 3, RequireRestart = false, HintText = "Children will grow to adulthood instantly.")]
         [SettingPropertyGroup("Children Growth Rate Settings")]
         public bool instantGrowth { get; set; } = false;
 
-        [SettingPropertyBool("Affect Everyone", Order = 3, RequireRestart = false, HintText = "Mod affects all children & adults.")]
+        [SettingPropertyBool("Affect Everyone", Order = 4, RequireRestart = false, HintText = "Mod affects all children & adults.")]
         [SettingPropertyGroup("Children Growth Rate Settings")]
         public bool affectEveryone { get; set; } = false;
-
-        [SettingPropertyBool("Enable Spouse Events", Order = 1, RequireRestart = false, HintText = "Enables spouse events feature")]
-        [SettingPropertyGroup("Spouse Events")]
-        public bool spouseEventsEnabled { get; set; } = false;
-
-        [SettingPropertyInteger("Event Chance", 1, 10, Order = 2, RequireRestart = false, HintText = "The chance of the events happening")]
-        [SettingPropertyGroup("Spouse Events")]
-        public int eventChance { get; set; } = 1;
 
         [SettingPropertyBool("Random Traits for Children", Order = 1, HintText = "Enables random traits for children")]
         [SettingPropertyGroup("Random Traits")]

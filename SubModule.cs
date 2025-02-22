@@ -26,8 +26,6 @@ namespace childrenGrowFaster
             if (game.GameType is Campaign)
             {
                 CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, OnDailyTick);
-                CampaignGameStarter campaignStarter = (CampaignGameStarter)gameStarterObject;
-                campaignStarter.AddBehavior(new SubModuleBehaviour());
             }
         }
 
@@ -95,11 +93,14 @@ namespace childrenGrowFaster
 
         private void applyGrowthRateToEveryone()
         {
-            float growthRate = GlobalSettings<SubModuleSettings>.Instance.newGrowthRate;
+            float childGrowthRate = GlobalSettings<SubModuleSettings>.Instance.newGrowthRate;
+            float adultGrowthRate = GlobalSettings<SubModuleSettings>.Instance.adultGrowthRate;
+
             foreach (Hero h in Hero.AllAliveHeroes)
             {
                 if (h != null)
                 {
+                    float growthRate = h.Age >= 18 ? adultGrowthRate : childGrowthRate;
                     h.SetBirthDay(h.BirthDay - CampaignTime.Days(growthRate + 1f));
                 }
             }
